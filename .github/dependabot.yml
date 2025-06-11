@@ -1,0 +1,53 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/" #Look for `package.json` and `lock` files in the `root` directory
+    schedule:
+      interval: "weekly" # check the npm registry for updates every week
+    open-pull-requests-limit: 0
+    groups: 
+      production-dependencies: 
+        dependency-type: "production"
+        applies-to: "security-updates"
+        update-types:
+          - "minor"
+          - "patch"
+      development-dependencies:
+        dependency-type: "development"
+        applies-to: "security-updates"
+        exclude-patterns: 
+          - "@angular/**/*"
+        update-types:
+          - "minor"
+          - "patch"
+      angular:
+        applies-to: "security-updates" 
+        patterns: 
+          - "@angular/**/*"
+        update-types:
+          - "minor"
+          - "patch"
+    ignore: 
+      - dependency-name: "@angular*"
+        update-types: ["version-update:semver-major"]
+    assignees: 
+      - "liyuf"
+    reviewers:
+      - "YufeiLi"
+    labels: 
+      - "npm dependencies"
+      - "triage-board"
+    commit-message: 
+      # prefix all commit message with "npm"
+      prefix: "npm"
+    milestone: 4
+    pull-request-branch-name:
+      separator: "-"
+    target-branch: "main" # security updates won't work unless it is default branch
+
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule: 
+      interval: "weekly"
+    open-pull-requests-limit: 0
