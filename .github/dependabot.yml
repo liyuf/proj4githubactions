@@ -33,7 +33,7 @@ updates:
     assignees: 
       - "liyuf"
     reviewers:
-      - "YufeiLi"
+      - "YufeiLi-eaton"
     labels: 
       - "npm dependencies"
       - "triage-board"
