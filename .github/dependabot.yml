@@ -43,7 +43,7 @@ updates:
     milestone: 4
     pull-request-branch-name:
       separator: "-"
-    target-branch: "main" # security updates won't work unless it is default branch
+    #target-branch: "main" # security updates won't work unless it is default branch
 
 
   - package-ecosystem: "docker"
